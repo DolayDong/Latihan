@@ -5,6 +5,7 @@ public class App {
     public static void main(String[] args) {
 
         for (int i = 0; i < 2; i++) {
+            int lamaParkir;
             Scanner userInput = new Scanner(System.in);
             System.out.print("Plat nomor : ");
             int plat = userInput.nextInt();
@@ -14,6 +15,17 @@ public class App {
             int jamMasuk = userInput.nextInt();
             System.out.println("Jam keluar : ");
             int jamKeluar = userInput.nextInt();
+
+            if (jamMasuk > jamKeluar) {
+                lamaParkir = jamKeluar - jamMasuk + 24;
+            } else {
+                lamaParkir = jamKeluar - jamMasuk;
+            }
+
+            if (lamaParkir == 0) {
+                lamaParkir = 1;
+            }
+
             if (jamKeluar > 24) {
                 System.out.println("Jam keluar tidak valid");
             } else if (jamMasuk > 24) {
@@ -21,7 +33,6 @@ public class App {
             } else {
 
                 String jenisKendaraan = "Mobil";
-                int lamaParkir = jamKeluar - jamMasuk + 24;
                 switch (jenis) {
                 case 1:
                     int hargaParkirMobil;
